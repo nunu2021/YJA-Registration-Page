@@ -8,16 +8,19 @@ import Table from 'react-bootstrap/Table';
 
 
 class Logs extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
         data_s: []
     }
+
+    
 
 
   }
 
   componentDidMount(){
+    
     const db = getDatabase();
     const starCountRef = ref(db, `users/` );
     onValue(starCountRef, (snapshot) => {
@@ -29,28 +32,20 @@ class Logs extends React.Component {
     this.state = {
         data_s : data
     }
-    console.log(this.state.data_s)
 
     });
-    
-
-    
   }
-
-  
-   
 
  
 
   render() {
 
-    
-
-
     return (
       <div className="App">
       
       <body>
+
+        <h classname="header_logs">Registrated Users</h>
 
 
       <Table style={{margin:'5px'}} striped bordered hover>
@@ -71,7 +66,6 @@ class Logs extends React.Component {
         this.state.data_s.map((key, index)=>{
 
             const {name, email, phone, street, city, zip, jain_center, diet} = key;
-            console.log(this.state.data_s.length)
         
 
         return (
