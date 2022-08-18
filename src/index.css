@@ -13,3 +13,28 @@ code {
 }
 
 
+.header_logs{
+  font-size: xx-large;
+
+}
+
+.column {
+  flex: 50%;
+
+  
+
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+  
+  
+
+  display: flex;
+}
+
+input{
+  background-color: rgba(255, 255, 255, 0.25);
+  
+}

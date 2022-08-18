@@ -1,9 +1,10 @@
 import logo from './logo.svg';
-import './App.css';
+import './index.css';
 import React from 'react';
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
+import { CSVDownload, CSVLink } from 'react-csv';
 
 
 
@@ -20,6 +21,7 @@ class Logs extends React.Component {
   }
 
   componentDidMount(){
+   
     
     const db = getDatabase();
     const starCountRef = ref(db, `users/` );
@@ -29,9 +31,9 @@ class Logs extends React.Component {
     snapshot.forEach(cs =>{
         data.push({"name":cs.key, "email":cs.val()["email"], "phone": cs.val()["phone"], "street":cs.val()["street"], "city": cs.val()["city"], "zip": cs.val()["zip"], "jain_center": cs.val()["jain_center"], "diet":cs.val()["diet"]})
     })
-    this.state = {
+    this.setState ({
         data_s : data
-    }
+    })
 
     });
   }
@@ -40,12 +42,14 @@ class Logs extends React.Component {
 
   render() {
 
+
     return (
       <div className="App">
       
       <body>
-
-        <h classname="header_logs">Registrated Users</h>
+      <br/><br/>
+        <h className="header_logs">Registered Users</h>
+        <br/><br/>
 
 
       <Table style={{margin:'5px'}} striped bordered hover>
@@ -70,7 +74,7 @@ class Logs extends React.Component {
 
         return (
  
-            <tr key= {key}>
+            <tr key= {index}>
                 <td>{name}</td>
                 <td>{email}</td>
                 <td>{phone}</td>
@@ -79,14 +83,6 @@ class Logs extends React.Component {
                 <td>{zip}</td>
                 <td>{jain_center}</td>
                 <td>{diet}</td>
-
-                {/* <td>{this.state.data_s[key]["email"]}</td>
-                <td>{this.state.data_s[key]["phone"]}</td>
-                <td>{this.state.data_s[key]["street"]}</td>
-                <td>{this.state.data_s[key]["city"]}</td>
-                <td>{this.state.data_s[key]["zip"]}</td>
-                <td>{this.state.data_s[key]["jain_center"]}</td>
-                <td>{this.state.data_s[key]["diet"]}</td> */}
                 </tr>
               
            )
@@ -98,6 +94,9 @@ class Logs extends React.Component {
    }
         </tbody>
         </Table>
+        <br/>
+
+        <CSVLink data={this.state.data_s}>Download CSV</CSVLink>
 
       </body>
 

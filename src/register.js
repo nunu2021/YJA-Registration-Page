@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './index.css';
 import React, { Component } from 'react';
 import DatePicker from 'react-date-picker';
 import firebase from './firebase.js'
@@ -7,6 +7,7 @@ import { getDatabase, ref, set } from "firebase/database";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import background from "./bg.jpeg";
 
 class Register extends React.Component {
   constructor(props) {
@@ -64,7 +65,7 @@ class Register extends React.Component {
       this.setState({["error_color"]: "red"});
       this.setState({["error_message"]: "Please write special needs in less than 200 characters."});
     }else{ // if the data entered is valid, then go ahead and save in database
-      alert("its working???")
+
       this.setState({["error_color"]: "green"});
       this.setState({["error_message"]: "Thank you for registering!"});
 
@@ -104,46 +105,40 @@ class Register extends React.Component {
   render() {
     return (
       <div className="App">
-      <header className="App-header">
+        
+      <header className="App-header"  style={{ backgroundImage: `url(${background})`, backgroundSize:'cover' }}>
 
-        <div style={{backgroundColor:'lightblue', paddingleft:'15%', paddingRight:'15%'}}>
-
-          <div style={{paddingLeft:'50%',paddingRight:'40%', fontWeight:'lighter', fontSize:'70%'}}>
-
-          <div style={{padding:'20px',  fontWeight:'bold', fontSize:'40px'}}>
+        
+        <div style={{padding:'20px', fontSize:'40px'}}>
           <h >YJA Registration Form</h>
 
           
           </div>
-          
-          
-            <div style={{textAlign:'left'}}>
-            
-              <label>
+          <div class=" gx-5" style={{padding:'5ch',backgroundColor:'rgba(255,255,255,0.5)',  borderRadius:'5px'}}>
+          <div className="row gx-5"   style={{fontWeight:'lighter', fontSize:'70%'}}>
+            <div className="column"  style={{textAlign:'left'}}>
+
+            <label>
                 <p style={{fontWeight:'normal', margin:'0'}}>Name:</p>
                 <input style={{}} type="text" value={this.state.name} onChange={event => this.handleChange(event, "name")} />
               </label>
               
-              <br/><br/>
+              <br/><br/><br/>
               
-              <p style={{fontWeight:'normal', margin:'0'}}>BirthDate:</p>
-              <DatePicker className='class1' onChange={this.handleChangeDate} value={this.state.birthdate} />
-
-              <br/><br/>
-
+             
               <label>
                 <p style={{fontWeight:'normal', margin:'0'}}>Phone:</p>
                 <input type="text" value={this.state.phone} onChange={event => this.handleChange(event, "phone")} />
               </label>
 
-              <br/><br/>
+              <br/><br/><br/>
 
               <label>
                 <p style={{fontWeight:'normal', margin:'0'}}>Email:</p>
                 <input type="text" value={this.state.email} onChange={event => this.handleChange(event, "email")} />
               </label>
 
-              <br/><br/>
+              <br/><br/><br/>
 
               <label>
                 <p style={{fontWeight:'normal', margin:'0'}}>Address:</p>
@@ -155,14 +150,25 @@ class Register extends React.Component {
                 <input type="text" value={this.state.zip} onChange={event => this.handleChange(event, "zip")} />
               </label>
 
-              <br/><br/>
+              <br/><br/><br/>
 
-              <label>
+
+            </div>
+
+            <div className="column" style={{textAlign:'left'}} >
+
+            <p style={{fontWeight:'normal', margin:'0'}}>BirthDate:</p>
+              <DatePicker className='class1' onChange={this.handleChangeDate} value={this.state.birthdate} />
+
+              <br/><br/><br/>
+
+
+            <label>
                 <p style={{fontWeight:'normal', margin:'0'}}>Jain Center:</p>
                 <input type="text" value={this.state.jain_center} onChange={event => this.handleChange(event, "jain_center")} />
               </label>
 
-              <br/><br/>
+              <br/><br/><br/>
               <label>
                 <p style={{fontWeight:'normal', margin:'0'}}>Dietary Preferences:</p>
                   <div style={{textAlign:'left'}} onChange={event => this.handleChange(event, "diet")}>
@@ -173,21 +179,26 @@ class Register extends React.Component {
                     <input type="radio" value="Vegetarian" name="diet" /> Vegetarian
                   </div>
                 </label>
-                <br/><br/>
+                <br/><br/><br/>
                 <label>
                   <p style={{fontWeight:'normal', margin:'0'}}>Any Special Needs?:</p>
                   <input style={{}} type="text" value={this.state.special_needs} onChange={event => this.handleChange(event, "special_needs")} />
                 </label>
-                <br/>
+                <br/><br/> <br/> 
+                <p style={{color:this.state.error_color, fontWeight:'normal', textAlign:'center', fontSize:'15px'}}>{this.state.error_message}</p>
+                
+                <button style={{ borderRadius:'5px', width:'100%', backgroundColor:'darkgreen', color:'white'}} onClick={this.handleSubmit}>Submit</button>
               </div>
-              <br/><br/>
-              <p style={{color:this.state.error_color, fontWeight:'bold'}}>{this.state.error_message}</p>
+             
+              
           
-              <button style={{ borderRadius:'5px', padding:'8px'}} onClick={this.handleSubmit}>Submit</button>
+              
          
             <br/>
-          </div>
-        </div>
+
+</div>
+            </div>
+
       </header>
     </div>
     );
