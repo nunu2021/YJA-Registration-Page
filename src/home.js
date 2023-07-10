@@ -6,6 +6,8 @@ import firebase from './firebase.js'
 import { getDatabase, ref, set } from "firebase/database";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from "react-router-dom";
+import background from "./bg.jpeg";
 
 
 class Home extends React.Component {
@@ -33,7 +35,15 @@ class Home extends React.Component {
   render() {
     return (
       <div className="App">
-     
+        <header className="App-header"  style={{ backgroundImage: `url(${background})`, backgroundSize:'cover' }}>
+        <div className="centered">
+          <Link to="/register">Register Page</Link>
+          <br></br> <br></br> <br></br>
+          <Link to="/logs">Admin Logs Page</Link>
+        </div>
+          
+        </header>
+
     </div>
     );
   }

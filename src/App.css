@@ -43,3 +43,12 @@ input{
   border-width:0.03ch;
 
 }
+
+.centered{
+  border: 5px solid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 50px;
+  background-color: aliceblue;
+}
