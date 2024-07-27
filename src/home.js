@@ -37,9 +37,9 @@ class Home extends React.Component {
       <div className="App">
         <header className="App-header"  style={{ backgroundImage: `url(${background})`, backgroundSize:'cover' }}>
         <div className="centered">
-          <Link to="/register">Register Page</Link>
+          <Link to="/newpost">Create New Post</Link>
           <br></br> <br></br> <br></br>
-          <Link to="/logs">Admin Logs Page</Link>
+          <Link to="/allposts">All Posts</Link>
         </div>
           
         </header>

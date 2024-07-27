@@ -2,8 +2,8 @@ import React from 'react'
 import logo from './logo.svg';
 import './App.css';
 import Home from './home.js'
-import Register from './register.js'
-import Logs from './logs.js'
+import NewPost from './newpost.js'
+import AllPosts from './allposts.js'
 import {
   BrowserRouter as Router,
   Route,
@@ -22,8 +22,8 @@ class App extends React.Component {
       <Router>
       <Routes>
           <Route path='/'  element={<Home />} />
-          <Route path='/register' element={<Register/>} />
-          <Route path='/logs' element={<Logs/>} />
+          <Route path='/newpost' element={<NewPost/>} />
+          <Route path='/allposts' element={<AllPosts/>} />
       </Routes>
       </Router>
     );
